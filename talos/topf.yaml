@@ -5,7 +5,7 @@ clusterEndpoint: https://192.168.20.20:6443
 talosVersion: v1.13.7
 kubernetesVersion: v1.36.3
 
-secretsPath: secrets.yaml
+secretsPath: secrets.sops.yaml
 
 nodes:
   - host: "t1p"
