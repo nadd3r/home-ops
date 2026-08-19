@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "hverlin.mise-vscode",
+    "IronGeek.vscode-env",
+    "nefrob.vscode-just-syntax",
+    "PKief.material-icon-theme",
+    "redhat.vscode-yaml",
+    "oxc.oxc-vscode",
+    "BlueGlassBlock.better-json5"
+  ]
+}
