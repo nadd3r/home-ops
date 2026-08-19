@@ -1,0 +1,24 @@
+---
+helmDefaults:
+  args:
+    - --include-crds
+    - --no-hooks
+
+bases:
+  - default.yaml
+
+releases:
+  - name: cloudflare-dns
+    namespace: network
+    inherit:
+      - template: default
+
+  - name: envoy-gateway
+    namespace: network
+    inherit:
+      - template: default
+
+  - name: prometheus-operator-crds
+    namespace: observability
+    chart: oci://ghcr.io/prometheus-community/charts/prometheus-operator-crds
+    version: 29.0.0
