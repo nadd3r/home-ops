@@ -23,3 +23,4 @@ patches:
           instance:
             sync:
               url: ssh://git@gitlab.com/nadd3r/home-ops.git
+              ref: "refs/heads/main"
