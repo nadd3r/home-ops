@@ -1,0 +1,46 @@
+---
+clusterName: kubernetes
+clusterEndpoint: https://192.168.20.20:6443
+
+talosVersion: v1.13.7
+kubernetesVersion: v1.36.3
+
+secretsPath: secrets.sops.yaml
+
+nodes:
+  - host: "t1p"
+    ip: "192.168.20.31"
+    role: control-plane
+    schematicId: "b20910801cea27910b9707c7aeac6823a4f00e62a511da317968881df0fd6271"
+    secureboot: true
+    data:
+      installDisk: "/dev/disk/by-id/nvme-Sandisk_Optimus_GX_7100M_1TB_26203J800766"
+      installDiskSerial: ""
+      macAddr: "e0:51:d8:21:bf:88"
+      mtu: 9000
+      encryptDisk: false
+      kernelModules: []
+  - host: "t2p"
+    ip: "192.168.20.32"
+    role: control-plane
+    schematicId: "b20910801cea27910b9707c7aeac6823a4f00e62a511da317968881df0fd6271"
+    secureboot: true
+    data:
+      installDisk: "/dev/disk/by-id/nvme-Sandisk_Optimus_GX_7100M_1TB_26203J800777"
+      installDiskSerial: ""
+      macAddr: "e0:51:d8:21:ba:52"
+      mtu: 1500
+      encryptDisk: false
+      kernelModules: []
+  - host: "t3p"
+    ip: "192.168.20.33"
+    role: control-plane
+    schematicId: "b20910801cea27910b9707c7aeac6823a4f00e62a511da317968881df0fd6271"
+    secureboot: true
+    data:
+      installDisk: "/dev/disk/by-id/nvme-Sandisk_Optimus_GX_7100M_1TB_26203J800776"
+      installDiskSerial: ""
+      macAddr: "e0:51:d8:21:ba:3d"
+      mtu: 1500
+      encryptDisk: false
+      kernelModules: []

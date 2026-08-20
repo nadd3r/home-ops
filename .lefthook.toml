@@ -4,7 +4,7 @@ skip = ["merge", "rebase"]
 
 [pre-commit.commands.format-just]
 glob = [".just", ".justfile"]
-run = 'for f in {staged_files}; do just --justfile "$f" fmt; done'
+run = 'for f in {staged_files}; do just --justfile "$f" --fmt; done'
 stage_fixed = true
 
 [pre-commit.commands.format-mise]
