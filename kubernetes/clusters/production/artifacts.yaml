@@ -16,8 +16,8 @@ spec:
           to: "@artifact/production/"
         - from: "@monorepo/kubernetes/infrastructure/base/**"
           to: "@artifact/base/"
-        - from: "@monorepo/kubernetes/components/**"
-          to: "@artifact/components/"
+        # - from: "@monorepo/kubernetes/components/**"
+        #   to: "@artifact/components/"
     - name: apps
       originRevision: "@monorepo"
       copy:
@@ -25,5 +25,5 @@ spec:
           to: "@artifact/base/"
         - from: "@monorepo/kubernetes/apps/production/**"
           to: "@artifact/production/"
-        - from: "@monorepo/components/**"
-          to: "@artifact/components/"
+        # - from: "@monorepo/components/**"
+        #   to: "@artifact/components/"
