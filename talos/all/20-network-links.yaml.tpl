@@ -15,10 +15,10 @@ mtu: {{ .Node.Data.mtu }}
 ---
 apiVersion: v1alpha1
 kind: VLANConfig
-name: bond.20
+name: bond0.20
 parent: bond0
 vlanID: 20
-mtu: 9000
+mtu: {{ .Node.Data.mtu }}
 addresses:
   - address: "{{ .Node.IP }}/24"
 routes:
@@ -27,6 +27,6 @@ routes:
 ---
 apiVersion: v1alpha1
 kind: Layer2VIPConfig
-link: bond.20
+link: bond0.20
 name: "192.168.20.20"
 {{- end }}
