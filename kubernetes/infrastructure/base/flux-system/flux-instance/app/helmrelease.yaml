@@ -25,7 +25,7 @@ spec:
         url: ""
         pullSecret: git-ssh-key
         ref: "refs/heads/"
-        path: kubernetes/flux/cluster
+        path: kubernetes/clusters/<cluster>
       commonMetadata:
         labels:
           app.kubernetes.io/name: flux
