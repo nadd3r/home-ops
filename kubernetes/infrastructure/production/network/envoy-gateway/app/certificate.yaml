@@ -1,0 +1,10 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: "sud0-production"
+spec:
+  dnsNames:
+    - "sud0.net"
+    - "*.sud0.net"
+  secretName: "sud0-production-tls"
