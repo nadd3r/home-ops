@@ -1,0 +1,11 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: flux-instance
+spec:
+  values:
+    instance:
+      sync:
+        url: ssh://git@gitlab.com/nadd3r/home-ops.git
+        ref: "refs/heads/main"
+        path: kubernetes/clusters/production

@@ -5,10 +5,10 @@ resources:
   - ../../../base/flux-system/flux-operator/ks.yaml
 
 patches:
-  - patch: |
-      apiVersion: kustomize.toolkit.fluxcd.io/v1
+  - target:
       kind: Kustomization
-      metadata:
-        name: flux-operator
-      spec:
-        path: ./kubernetes/infrastructure/production/flux-system/flux-operator/app
+      name: flux-operator
+    patch: |-
+      - op: replace
+        path: /spec/path
+        value: ./kubernetes/infrastructure/production/flux-system/flux-operator/app

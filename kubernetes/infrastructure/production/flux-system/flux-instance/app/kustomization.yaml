@@ -5,23 +5,11 @@ resources:
   - ../../../../base/flux-system/flux-instance/app
 
 patches:
-  - patch: |
-      apiVersion: gateway.networking.k8s.io/v1
+  - target:
       kind: HTTPRoute
-      metadata:
-        name: flux-webhook
-      spec:
-        hostnames:
-        - flux-webhook.sud0.net
-  - patch: |
-      apiVersion: helm.toolkit.fluxcd.io/v2
+      name: flux-webhook
+    path: ./httproute.yaml
+  - target:
       kind: HelmRelease
-      metadata:
-        name: flux-instance
-      spec:
-        values:
-          instance:
-            sync:
-              url: ssh://git@gitlab.com/nadd3r/home-ops.git
-              ref: "refs/heads/main"
-              path: kubernetes/clusters/production
+      name: flux-instance
+    path: ./helmrelease.yaml
