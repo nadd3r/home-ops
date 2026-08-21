@@ -7,3 +7,4 @@ resources:
   - ./namespace.yaml
   - ./envoy-gateway/
   - ./cloudflare-tunnel/
+  - ./cloudflare-dns/
