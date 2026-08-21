@@ -6,3 +6,4 @@ namespace: network
 resources:
   - ./namespace.yaml
   - ./envoy-gateway/
+  - ./cloudflare-tunnel/
