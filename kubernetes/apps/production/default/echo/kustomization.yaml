@@ -11,4 +11,4 @@ patches:
     patch: |-
       - op: replace
         path: /spec/path
-        value: ./kubernetes/infrastructure/production/default/echo/app
+        value: ./kubernetes/apps/production/default/echo/app
