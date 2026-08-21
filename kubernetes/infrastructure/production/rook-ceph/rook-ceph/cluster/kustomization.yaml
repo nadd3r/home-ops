@@ -1,0 +1,11 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../../../base/rook-ceph/rook-ceph/cluster
+
+patches:
+  - target:
+      name: rook-ceph-cluster
+      kind: HelmRelease
+    path: ./helmrelease.yaml
