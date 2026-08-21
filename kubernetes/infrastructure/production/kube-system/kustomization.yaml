@@ -7,3 +7,12 @@ resources:
   - ./namespace.yaml
   - ./cilium/
   - ./coredns/
+
+patches:
+  - target:
+      kind: Kustomization
+      name: cloudflare-tunnel
+    patch: |-
+      - op: replace
+        path: /spec/path
+        value: ./kubernetes/infrastructure/production/network/cloudflare-tunnel/app
