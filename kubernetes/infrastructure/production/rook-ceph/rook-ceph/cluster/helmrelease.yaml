@@ -7,7 +7,7 @@ spec:
   values:
     cephClusterSpec:
       storage:
-        devicePathFilter: /dev/disk/by-id/nvme-TWSC_TSC3AN1T0-F6Q10S_.*
+        devicePathFilter: /dev/disk/by-id/.*TWSC_TSC3AN1T0-F6Q10S_.*
     route:
       dashboard:
         host:
