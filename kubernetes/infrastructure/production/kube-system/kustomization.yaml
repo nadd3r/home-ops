@@ -6,3 +6,4 @@ namespace: kube-system
 resources:
   - ./namespace.yaml
   - ./cilium/
+  - ./coreedns/
