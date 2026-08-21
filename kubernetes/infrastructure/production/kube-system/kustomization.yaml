@@ -7,3 +7,5 @@ resources:
   - ./namespace.yaml
   - ./cilium/
   - ./coredns/
+  - ./spegel/
+  - ./reloader/
