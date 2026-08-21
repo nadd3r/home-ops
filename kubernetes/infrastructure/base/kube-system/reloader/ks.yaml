@@ -2,7 +2,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: spegel
+  name: reloader
 spec:
   interval: 1h
   path: ./kubernetes/infrastructure/<cluster>/kube-system/reloader/app
