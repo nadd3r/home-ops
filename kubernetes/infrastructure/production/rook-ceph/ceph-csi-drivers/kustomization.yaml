@@ -1,0 +1,14 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../../base/rook-ceph/ceph-csi-drivers/ks.yaml
+
+patches:
+  - target:
+      kind: Kustomization
+      name: ceph-csi-drivers
+    patch: |-
+      - op: replace
+        path: /spec/path
+        value: ./kubernetes/infrastructure/production/rook-ceph/ceph-csi-drivers/app
