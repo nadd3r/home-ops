@@ -23,7 +23,7 @@ spec:
           hostnames: ["alertmanager.example.com"]
           parentRefs:
             - name: envoy-internal
-              namespace: networking
+              namespace: network
               sectionName: https
       alertmanagerSpec:
         alertmanagerConfiguration:
@@ -70,7 +70,7 @@ spec:
           hostnames: ["prometheus.example.com"]
           parentRefs:
             - name: envoy-internal
-              namespace: networking
+              namespace: network
               sectionName: https
       prometheusSpec:
         ruleSelectorNilUsesHelmValues: false
