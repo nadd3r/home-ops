@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - ./ocirepository.yaml
   - ./helmrelease.yaml
+  - https://raw.githubusercontent.com/dragonflydb/dragonfly-operator/main/manifests/crd.yaml
