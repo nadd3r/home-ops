@@ -1,0 +1,22 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: kube-prometheus-stack
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: kube-prometheus-stack
+  interval: 1h
+  dependsOn: []
+  values:
+    alertmanager:
+      route:
+        main:
+          hostnames: ["alertmanager.sud0.net"]
+      alertmanagerSpec:
+        externalUrl: https://alertmanager.sud0.net
+    prometheus:
+      route:
+        main:
+          hostnames: ["prometheus.sud0.net"]
