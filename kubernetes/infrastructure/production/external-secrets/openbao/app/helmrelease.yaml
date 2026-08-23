@@ -29,3 +29,7 @@ spec:
               mount_path = "transit/"
               tls_skip_verify = "false"
             }
+      gateway:
+        httpRoute:
+          hosts:
+            - openbao.sud0.net
