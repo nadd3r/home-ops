@@ -38,7 +38,7 @@ spec:
             service_registration "kubernetes" {}
 
             seal "transit" {
-              address = "https://bao.internal.sud0.net"
+              address = "https://bao.example.com"
               key_name = "openbao-unseal"
               mount_path = "transit/"
               tls_skip_verify = "false"
@@ -60,6 +60,16 @@ spec:
         - envName: VAULT_TOKEN
           secretName: openbao-transit-token
           secretKey: token
+
+      gateway:
+        httpRoute:
+          enabled: True
+          hosts:
+            - bao.example.com
+          parentRefs:
+            - name: envoy-internal
+              namespace: network
+              sectionName: https
 
     ui:
       enabled: true
