@@ -43,7 +43,8 @@ spec:
       route:
         main:
           enabled: true
-          hostname: ["authentik.example.com"]
+          hostname:
+            - "authentik.example.com"
           parentRefs:
             - name: envoy-external
               namespace: network
