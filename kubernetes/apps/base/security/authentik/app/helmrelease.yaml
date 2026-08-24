@@ -19,7 +19,7 @@ spec:
           value: authentik-db-rw
         - name: AUTHENTIK_POSTGRESQL__USER
           value: authentik
-        - name: AUTHEENTIK_POSTGRESQL__PASSWORD
+        - name: AUTHENTIK_POSTGRESQL__PASSWORD
           valueFrom:
             secretKeyRef:
               name: authentik-db-app
