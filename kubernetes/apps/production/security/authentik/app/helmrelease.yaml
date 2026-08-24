@@ -8,4 +8,5 @@ spec:
     server:
       route:
         main:
-          hostname: ["authentik.sud0.net"]
+          hostname:
+            - "authentik.sud0.net"
