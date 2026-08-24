@@ -1,0 +1,58 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: authentik
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: authentik
+  interval: 1h
+  values:
+    global:
+      deploymentStrategy:
+        type: RollingUpdate
+      env:
+        - name: AUTHENTIK_POSTGRESQL__NAME
+          value: authentik-db
+        - name: AUTHENTIK_POSTGRESQL__HOST
+          value: authentik-db-rw
+        - name: AUTHENTIK_POSTGRESQL__USER
+          value: authentik
+        - name: AUTHEENTIK_POSTGRESQL__PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: authentik-db-app
+              key: db-password
+      envFrom:
+        - secretRef:
+            name: authentik-secrets
+    server:
+      autoscaling:
+        enabled: true
+        minReplicas: 1
+      resources:
+        requests:
+          cpu: 200m
+        limits:
+          memory: 1Gi
+      metrics:
+        prometheus:
+          serviceMonitor:
+            enabled: true
+      route:
+        main:
+          enabled: true
+          hostname: ["authentik.example.com"]
+          parentRefs:
+            - name: envoy-external
+              namespace: network
+    worker:
+      autoscaling:
+        enabled: true
+        minReplicas: 1
+      resources:
+        requests:
+          cpu: 200m
+        limits:
+          memory: 1Gi
