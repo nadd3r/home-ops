@@ -9,3 +9,7 @@ patches:
       kind: HelmRelease
       name: authentik
     path: ./helmrelease.yaml
+  - target:
+      kind: HTTPRoute
+      name: authentik
+    path: ./httproute.yaml
