@@ -44,3 +44,52 @@ nodes:
       mtu: 1500
       encryptDisk: false
       kernelModules: []
+
+  - host: "t11p"
+    ip: "192.168.20.41"
+    role: worker
+    schematicId: "8b690dfa8f9cebd7208a3f2f728f06377b5f468334f480485ad3f77d0cbf107d"
+    secureboot: true
+    data:
+      installDisk: "/dev/disk/by-id/nvme-PCIe_SSD_7E96073217BE00229288"
+      installDiskSerial: ""
+      macAddr: "6c:4b:90:eb:94:04"
+      mtu: 9000
+      encryptDisk: false
+      kernelModules: []
+  - host: "t12p"
+    ip: "192.168.20.42"
+    role: worker
+    schematicId: "8b690dfa8f9cebd7208a3f2f728f06377b5f468334f480485ad3f77d0cbf107d"
+    secureboot: true
+    data:
+      installDisk: "/dev/disk/by-id/nvme-PCIe_SSD_7FBC073A0DD900393912"
+      installDiskSerial: ""
+      macAddr: "6c:4b:90:eb:92:e6"
+      mtu: 9000
+      encryptDisk: false
+      kernelModules: []
+  - host: "t13p"
+    ip: "192.168.20.43"
+    role: worker
+    schematicId: "8b690dfa8f9cebd7208a3f2f728f06377b5f468334f480485ad3f77d0cbf107d"
+    secureboot: true
+    data:
+      installDisk: "/dev/disk/by-id/nvme-KINGSTON_SNV3S1000G_50026B768797B896"
+      installDiskSerial: ""
+      macAddr: "6c:4b:90:d2:1b:24"
+      mtu: 9000
+      encryptDisk: false
+      kernelModules: []
+  - host: "t14p"
+    ip: "192.168.20.44"
+    role: worker
+    schematicId: "8b690dfa8f9cebd7208a3f2f728f06377b5f468334f480485ad3f77d0cbf107d"
+    secureboot: true
+    data:
+      installDisk: "/dev/disk/by-id/nvme-KINGSTON_SNV3S1000G_50026B768797AC2A"
+      installDiskSerial: ""
+      macAddr: "6c:4b:90:cb:9a:8e"
+      mtu: 9000
+      encryptDisk: false
+      kernelModules: []
