@@ -8,5 +8,5 @@ spec:
     server:
       route:
         main:
-          hostname:
+          hostnames:
             - "authentik.sud0.net"

@@ -43,11 +43,12 @@ spec:
       route:
         main:
           enabled: true
-          hostname:
+          hostnames:
             - "authentik.example.com"
           parentRefs:
             - name: envoy-external
               namespace: network
+              sectionName: https
     worker:
       autoscaling:
         enabled: true
