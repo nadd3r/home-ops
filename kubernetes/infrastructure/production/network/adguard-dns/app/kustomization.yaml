@@ -9,3 +9,7 @@ patches:
       kind: HelmRelease
       name: adguard
     path: ./helmrelease.yaml
+  - target:
+      kind: Certificate
+      name: adguard
+    path: ./certificate.yaml
