@@ -1,0 +1,10 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: adguard
+spec:
+  commonName: dns.sud0.net
+  dnsNames:
+    - dns.sud0.net
+    - adguard.sud0.net
