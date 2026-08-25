@@ -7,7 +7,7 @@ spec:
   interval: 1h
   chartRef:
     kind: OCIRepository
-    name: dragonfly
+    name: adguard-dns
   install:
     remediation:
       retries: -1
