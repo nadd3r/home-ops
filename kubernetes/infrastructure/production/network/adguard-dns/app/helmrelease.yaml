@@ -9,7 +9,7 @@ spec:
       dns:
         annotations:
           external-dns.alpha.kubernetes.io/hostname: dns.sud0.net
-          lbipam.cilium.io/ips: 192.168.22.53
+          lbipam.cilium.io/ips: 192.168.22.3
     route:
       main:
         hostnames:
