@@ -9,3 +9,4 @@ resources:
   - ./cloudflare-tunnel/
   - ./cloudflare-dns/
   - ./k8s-gateway/
+  - ./adguard-dns/

@@ -1,0 +1,16 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: adguard-dns
+spec:
+  values:
+    service:
+      dns:
+        annotations:
+          external-dns.alpha.kubernetes.io/hostname: dns.sud0.net
+          lbipam.cilium.io/ips: 192.168.22.53
+    route:
+      main:
+        hostnames:
+          - "adguard.sud0.net"
