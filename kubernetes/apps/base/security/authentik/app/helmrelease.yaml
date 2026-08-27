@@ -36,7 +36,7 @@ spec:
           cpu: 50m
           memory: 512Mi
         limits:
-          cpu: 100m
+          cpu: 200m
           memory: 1Gi
       metrics:
         prometheus:
@@ -60,5 +60,5 @@ spec:
           cpu: 50m
           memory: 256Mi
         limits:
-          cpu: 100m
-          memory: 512Mi
+          cpu: 200m
+          memory: 1Gi
