@@ -7,14 +7,14 @@ resources:
 patches:
   - target:
       kind: Kustomization
-      name: rook-ceph
+      name: tuppr
     patch: |-
       - op: replace
         path: /spec/path
         value: ./kubernetes/infrastructure/production/system-upgrade/tuppr/app
   - target:
       kind: Kustomization
-      name: rook-ceph-cluster
+      name: tuppr-upgrades
     patch: |-
       - op: replace
         path: /spec/path
