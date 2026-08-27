@@ -15,9 +15,9 @@ spec:
         enabled: true
       prometheusRule:
         enabled: true
-      dashboards:
-        enabled: true
-        grafanaOperator:
-          enabled: true
-          matchLabels:
-            dashboards: grafana
+      # dashboards:
+      #   enabled: true
+      #   grafanaOperator:
+      #     enabled: true
+      #     matchLabels:
+      #       dashboards: grafana
