@@ -18,4 +18,4 @@ patches:
     patch: |-
       - op: replace
         path: /spec/path
-        value: ./kubernetes/infrastructure/production/system-upgrade/tuppr/upgrade
+        value: ./kubernetes/infrastructure/production/system-upgrade/tuppr/upgrades
