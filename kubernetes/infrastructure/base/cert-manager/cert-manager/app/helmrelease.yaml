@@ -18,3 +18,26 @@ spec:
       enabled: true
       servicemonitor:
         enabled: true
+    resources:
+      requests:
+        cpu: 1m
+        memory: 100Mi
+      limits:
+        cpu: 5m
+        memory: 200Mi
+    webhook:
+      resources:
+        requests:
+          cpu: 1m
+          memory: 20Mi
+        limits:
+          cpu: 5m
+          memory: 50Mi
+    cainjector:
+      resources:
+        requests:
+          cpu: 2m
+          memory: 75Mi
+        limits:
+          cpu: 5m
+          memory: 150Mi
