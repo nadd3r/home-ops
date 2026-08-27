@@ -1,0 +1,17 @@
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: oidc-example
+spec:
+  targetRefs:
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      name: kube-prometheus-stack-prometheus
+  oidc:
+    provider:
+      issuer: "https://authentik.sud0.net/application/o/prometheus"
+    clientID: "fjSxpGFzuIBm3Ur9o4HoaI9z2NcnwczcSabMvVCP"
+    clientSecret:
+      name: "app-client-secret"
+    redirectURL: "https://prometheus.sud0.net/oauth2/callback"
+    logoutPath: "/logout"
