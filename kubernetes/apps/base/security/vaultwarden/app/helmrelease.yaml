@@ -1,0 +1,95 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app vaultwarden
+spec:
+  interval: 1h
+  chartRef:
+    kind: OCIRepository
+    name: vaultwarden
+  install:
+    remediation:
+      retries: -1
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  values:
+    controllers:
+      vaultwarden:
+        type: deployment
+        replicas: 1
+        strategy: Recreate
+        annotations:
+          secret.reloader.stakater.com/reload: tls-vaultwarden
+        podDistruptionBudget:
+          minAvailable: 1
+        pod:
+          topologySpreadConstraints:
+            - maxSkew: 1
+              topologyKey: kubernetes.io/hostname
+              whenUnsatisfiable: DoNotSchedule
+              labelSelector:
+                matchLabels:
+                  app.kubernetes.io/controller: adguard
+                  app.kubernetes.io/name: *app
+        containers:
+          app:
+            image:
+              repository: docker.io/vaultwarden/server
+              tag: v1.37.2
+            envFrom:
+              - configMapRef:
+                  name: vaultwarden-env
+              - secretRef:
+                  name: vaultwarden-secrets
+              - name: DATABASE_URL
+                secretKeyRef:
+                  name: vaultwarden-db-app
+                  key: uri
+            probes:
+              liveness:
+                enabled: false
+              readiness:
+                enabled: true
+                custom: true
+                spec:
+                  tcpSocket:
+                    port: 80
+                  initialDelaySeconds: 5
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              startup:
+                enabled: false
+    service:
+      vaultwarden-web:
+        forceRename: *app
+        controller: vaultwarden
+        extraSelectorLabels:
+          apps.kubernetes.io/pod-index: "0"
+        ports:
+          http:
+            port: 80
+    route:
+      main:
+        annotations:
+          gatus.home-operations.com/enabled: "true"
+        hostnames:
+          - "vaultwarden.example.com"
+        parentRefs:
+          - name: envoy-internal
+            namespace: network
+        rules:
+          - backendRefs:
+              - identifier: app
+                port: http
+    persistence:
+      main:
+        enabled: true
+        type: PersistentVolumeClaim
+        accessMode: ReadWriteOnce
+        size: 32Gi
+        globalMounts:
+          - path: /data
