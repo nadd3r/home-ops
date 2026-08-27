@@ -9,3 +9,4 @@ resources:
   - ./coredns/
   - ./spegel/
   - ./reloader/
+  - ./metrics-server/
