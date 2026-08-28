@@ -5,7 +5,8 @@ metadata:
   name: vaultwarden
 spec:
   values:
-    route:
-      main:
-        hostnames:
-          - "vaultwarden.sud0.net"
+    server:
+      route:
+        main:
+          hostnames:
+            - "vaultwarden.sud0.net"

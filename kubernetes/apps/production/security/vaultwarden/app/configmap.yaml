@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: vaultwarden-env
+data:
+  DOMAIN: https://vaultwarden.sud0.net
+  SSO_AUTHORITY: https://authentik.sud0.net/application/o/vaultwarden/

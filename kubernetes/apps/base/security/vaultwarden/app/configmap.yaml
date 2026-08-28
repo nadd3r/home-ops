@@ -3,4 +3,14 @@ kind: ConfigMap
 metadata:
   name: vaultwarden-env
 data:
-  DOMAIN: https://vaultwarden.sud0.net
+  DOMAIN: https://vaultwarden.example.com
+  SIGNUPS_ALLOWED: "false"
+  PUSH_ENABLED: "true"
+  IP_HEADER: X-Forwarded-For
+  TRASH_AUTO_DELETE_DAYS: "7"
+  SSO_ENABLED: "true"
+  SSO_SCOPES: openid email profil offline_access
+  SSO_ONLY: "true"
+  SSO_SIGNUPS_MATCH_EMAIL: "true"
+  SSO_ALLOW_UNKNOWN_EMAIL_VERIFICATION: "false"
+  SSO_AUTHORITY: https://authentik.example.com/application/o/vaultwarden/
