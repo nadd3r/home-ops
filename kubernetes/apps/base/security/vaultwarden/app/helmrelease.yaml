@@ -71,8 +71,6 @@ spec:
             port: 80
     route:
       main:
-        annotations:
-          gatus.home-operations.com/enabled: "true"
         hostnames:
           - "vaultwarden.sud0.net"
         parentRefs:
