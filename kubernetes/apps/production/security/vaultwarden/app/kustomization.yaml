@@ -11,7 +11,7 @@ patches:
     path: ./helmrelease.yaml
   - target:
       kind: HTTPRoute
-      name: vaultwarden
+      name: vaultwarden-internal
     path: ./httproute.yaml
   - target:
       kind: ConfigMap
