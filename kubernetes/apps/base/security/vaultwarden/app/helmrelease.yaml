@@ -23,8 +23,6 @@ spec:
         strategy: Recreate
         annotations:
           secret.reloader.stakater.com/reload: tls-vaultwarden
-        podDistruptionBudget:
-          minAvailable: 1
         pod:
           topologySpreadConstraints:
             - maxSkew: 1
@@ -38,12 +36,13 @@ spec:
           app:
             image:
               repository: docker.io/vaultwarden/server
-              tag: v1.37.2
+              tag: 1.37.2
             envFrom:
               - configMapRef:
                   name: vaultwarden-env
               - secretRef:
                   name: vaultwarden-secrets
+            env:
               - name: DATABASE_URL
                 secretKeyRef:
                   name: vaultwarden-db-app
@@ -64,11 +63,9 @@ spec:
               startup:
                 enabled: false
     service:
-      vaultwarden-web:
+      app:
         forceRename: *app
         controller: vaultwarden
-        extraSelectorLabels:
-          apps.kubernetes.io/pod-index: "0"
         ports:
           http:
             port: 80
@@ -77,9 +74,9 @@ spec:
         annotations:
           gatus.home-operations.com/enabled: "true"
         hostnames:
-          - "vaultwarden.example.com"
+          - "vaultwarden.sud0.net"
         parentRefs:
-          - name: envoy-internal
+          - name: envoy-external
             namespace: network
         rules:
           - backendRefs:
@@ -88,7 +85,7 @@ spec:
     persistence:
       main:
         enabled: true
-        type: PersistentVolumeClaim
+        type: persistentVolumeClaim
         accessMode: ReadWriteOnce
         size: 32Gi
         globalMounts:
