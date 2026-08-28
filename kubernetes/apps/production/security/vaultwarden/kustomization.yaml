@@ -5,13 +5,13 @@ resources:
   - ../../../base/security/vaultwarden/ks.yaml
 
 patches:
-  # - target:
-  #     kind: Kustomization
-  #     name: vaultwarden
-  #   patch: |-
-  #     - op: replace
-  #       path: /spec/path
-  #       value: ./kubernetes/apps/production/security/vaultwarden/app
+  - target:
+      kind: Kustomization
+      name: vaultwarden
+    patch: |-
+      - op: replace
+        path: /spec/path
+        value: ./kubernetes/apps/production/security/vaultwarden/app
   - target:
       kind: Kustomization
       name: vaultwarden-database
