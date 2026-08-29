@@ -24,7 +24,7 @@ spec:
             service_registration "kubernetes" {}
 
             seal "transit" {
-              address = "https://bao.internal.sud0.net"
+              address = "https://openbao.internal.sud0.net"
               key_name = "openbao-unseal"
               mount_path = "transit/"
               tls_skip_verify = "false"
