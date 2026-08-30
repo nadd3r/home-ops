@@ -1,0 +1,66 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app kanbn
+spec:
+  interval: 1h
+  chartRef:
+    kind: OCIRepository
+    name: kanbn
+  install:
+    remediation:
+      retries: -1
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  values:
+    controllers:
+      kanbn:
+        type: deployment
+        replicas: 1
+        serviceAccount:
+          identifier: *app
+        strategy: Recreate
+        annotations:
+          secret.reloader.stakater.com/reload: tls-kanbn
+        initContainers:
+          kanbn-migrations:
+            image:
+              repository: ghcr.io/kanbn/kan-migrate
+              tag: latest
+            env:
+              - name: POSTGRES_URL
+                secretKeyRef:
+                  name: kanbn-db-app
+                  key: uri
+        containers:
+          app:
+            image:
+              repository: ghcr.io/kanbn/kan
+              tag: latest
+            envFrom:
+              - configMapRef:
+                  name: kanbn-env
+              - secretRef:
+                  name: kanbn-secrets
+            env:
+              - name: POSTGRES_URL
+                secretKeyRef:
+                  name: kanbn-db-app
+                  key: uri
+    service:
+      kanbn:
+        forceRename: *app
+        controller: kanbn
+        ports:
+          http:
+            port: 3000
+    route:
+      main:
+        hostnames:
+          - "kanbn.sud0.net"
+        parentRefs:
+          - name: envoy-external
+            namespace: network
