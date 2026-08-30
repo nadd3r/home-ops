@@ -22,7 +22,7 @@ spec:
       - name: EXTERNAL_DNS_PIHOLE_PASSWORD
         valueFrom:
           secretKeyRef:
-            name: &secret pihole-password
+            name: &secret pihole-dns-secret
             key: EXTERNAL_DNS_PIHOLE_PASSWORD
     extraArgs:
       - --pihole-server=https://pihole1.sud0.net
