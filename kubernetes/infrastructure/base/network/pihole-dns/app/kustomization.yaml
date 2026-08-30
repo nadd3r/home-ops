@@ -5,5 +5,5 @@ resources:
   - ./helmrelease.yaml
   - ./ocirepository.yaml
   - ./externalsecret.yaml
-  - ./certificate.yaml
-  - ./pvc.yaml
+  - ./dnsendpoint.yaml
+  - ./externalsecret.yaml

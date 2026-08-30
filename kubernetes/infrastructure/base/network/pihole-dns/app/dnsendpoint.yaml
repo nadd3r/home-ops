@@ -1,0 +1,12 @@
+---
+apiVersion: externaldns.k8s.io/v1alpha1
+kind: DNSEndpoint
+metadata:
+  name: cluster-internal
+  annotations:
+    external-dns.alpha.kubernetes.io/scope: internal
+spec:
+  endpoints:
+    - dnsName: "internal.sud0.net"
+      recordType: A
+      targets: ["192.168.22.10"]
