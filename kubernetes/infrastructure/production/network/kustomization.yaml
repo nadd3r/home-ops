@@ -8,5 +8,4 @@ resources:
   - ./envoy-gateway/
   - ./cloudflare-tunnel/
   - ./cloudflare-dns/
-  - ./k8s-gateway/
   - ./pihole-dns/
