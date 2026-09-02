@@ -6,3 +6,6 @@ namespace: observability
 resources:
   - ./namespace.yaml
   - ./kube-prometheus-stack/
+  - ./alloy/
+  - ./grafana-operator/
+  - ./loki/
