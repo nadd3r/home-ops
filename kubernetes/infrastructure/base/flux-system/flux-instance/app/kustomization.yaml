@@ -7,3 +7,6 @@ resources:
   - ./ocirepository.yaml
   - ./httproute.yaml
   - ./receiver.yaml
+  - ./grafanadashboard.yaml
+  - ./podmonitor.yaml
+  - ./prometheusrule.yaml
