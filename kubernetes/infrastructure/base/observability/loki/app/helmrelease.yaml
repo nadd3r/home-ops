@@ -1,0 +1,56 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: loki
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: loki
+  interval: 1h
+  values:
+    deploymentMode: SingleBinary
+    loki:
+      image:
+        repository: grafana/loki
+        tag: 3.7.7@sha256:d70e4659623f3e109af669cae76fe2a5dd5be54e2298fe8aed380d982fbc2500
+      auth_enabled: false
+      storage:
+        type: filesystem
+      schemaConfig:
+        configs:
+          - from: "2024-04-01"
+            object_store: filesystem
+            store: tsdb
+            schema: v13
+            index:
+              prefix: index_
+              period: 24h
+      commonConfig:
+        replication_factor: 1
+      limits_config:
+        retention_period: 7d
+      rulerConfig:
+        alertmanager_url: http://kube-prometheus-stack-alertmanager:9093
+    write:
+      replicas: 0
+    read:
+      replicas: 0
+    backend:
+      replicas: 0
+    singleBinary:
+      replicas: 1
+      persistence:
+        size: 8Gi
+        storageClass: ceph-block
+    test:
+      enabled: false
+    monitoring:
+      selfMonitoring:
+        enabled: false
+      lokiCanary:
+        enabled: false
+    resultsCache:
+      enabled: false
+    chunksCache:
+      enabled: false
