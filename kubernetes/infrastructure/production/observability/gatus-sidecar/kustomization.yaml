@@ -11,4 +11,4 @@ patches:
     patch: |-
       - op: replace
         path: /spec/path
-        value: ./kubernetes/infrastructure/production/observability/gatus/sidecar
+        value: ./kubernetes/infrastructure/production/observability/gatus/app
