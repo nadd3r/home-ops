@@ -29,7 +29,7 @@ nodes:
       installDisk: "/dev/disk/by-id/nvme-Sandisk_Optimus_GX_7100M_1TB_26203J800777"
       installDiskSerial: ""
       macAddr: "e0:51:d8:21:ba:52"
-      mtu: 1500
+      mtu: 9000
       encryptDisk: false
       kernelModules: []
   - host: "t3p"
@@ -41,7 +41,7 @@ nodes:
       installDisk: "/dev/disk/by-id/nvme-Sandisk_Optimus_GX_7100M_1TB_26203J800776"
       installDiskSerial: ""
       macAddr: "e0:51:d8:21:ba:3d"
-      mtu: 1500
+      mtu: 9000
       encryptDisk: false
       kernelModules: []
 
