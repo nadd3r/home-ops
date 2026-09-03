@@ -2,7 +2,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ../../../base/observability/gatus/ks.yaml
+  - ../../../base/observability/gatus-sidecar/ks.yaml
 
 patches:
   - target:
@@ -11,4 +11,4 @@ patches:
     patch: |-
       - op: replace
         path: /spec/path
-        value: ./kubernetes/infrastructure/production/observability/gatus/app
+        value: ./kubernetes/infrastructure/production/observability/gatus-sidecar/app
