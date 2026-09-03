@@ -5,7 +5,7 @@ metadata:
   name: truenas
 spec:
   interval: 1h
-  path: ./kubernetes/infrastructure/<cluster>/observability/truenas/app
+  path: ./kubernetes/apps/<cluster>/observability/truenas/app
   prune: true
   sourceRef:
     kind: GitRepository
