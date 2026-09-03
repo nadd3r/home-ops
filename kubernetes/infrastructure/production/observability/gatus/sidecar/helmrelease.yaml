@@ -1,0 +1,15 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: gatus-sidecar
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: gatus-sidecar
+  interval: 1h
+  values:
+    httpRoute:
+      hostnames:
+        - "{{ .Release.Name }}.sud0.net"
+        - status.sud0.net
