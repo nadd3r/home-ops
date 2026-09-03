@@ -3,7 +3,9 @@
 *.key
 *.decrypted~*.yaml
 *secrets.yaml
+*secret.yaml
 secret.sops.yaml
+secrets.sops.yaml
 /age.key
 /cloudflare-tunnel.json
 /deploy.key
