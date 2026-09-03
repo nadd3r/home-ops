@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
   - grafanadashboard.yaml
   - helmrelease.yaml
-  - source.yaml
+  - oicrepository.yaml
