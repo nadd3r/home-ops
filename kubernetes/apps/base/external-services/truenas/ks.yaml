@@ -5,11 +5,11 @@ metadata:
   name: truenas
 spec:
   interval: 1h
-  path: ./kubernetes/apps/<cluster>/observability/truenas/external
+  path: ./kubernetes/apps/<cluster>/external-services/truenas/external
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  targetNamespace: observability
+  targetNamespace: external-services
   wait: true
