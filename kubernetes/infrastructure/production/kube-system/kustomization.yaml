@@ -10,3 +10,5 @@ resources:
   - ./spegel/
   - ./reloader/
   - ./metrics-server/
+  - ./generic-device-plugin/
+  - ./intel-gpu-resource-driver/
