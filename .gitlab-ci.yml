@@ -1,4 +1,4 @@
-image: renovate/renovate:35.159
+image: renovate/renovate:44.65
 
 stages:
   - renovate
