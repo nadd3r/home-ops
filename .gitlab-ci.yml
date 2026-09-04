@@ -15,6 +15,7 @@ cache:
   paths:
     - $CI_PROJECT_DIR/renovate
 
+
 run_renovate:
   stage: renovate
   resource_group: production
