@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: garage-ui-env
+data:
+  GARAGE_UI_SERVER_ENVIRONMENT: "production"
+  GARAGE_UI_SERVER_DOMAIN: "garageui.sud0.net"
+  GARAGE_UI_SERVER_ROOT_URL: "https://garageui.sud0.net"
+  GARAGE_UI_SERVER_PROTOCOL: "https"
+  GARAGE_UI_GARAGE_ENDPOINT: "http://192.168.24.20:3900"
+  GARAGE_UI_GARAGE_ADMIN_ENDPOINT: "http://192.168.24.20:3903"
+  GARAGE_UI_GARAGE_REGION: "us-east-1"
+  GARAGE_UI_AUTH_OIDC_ENABLED: "true"
+  GARAGE_UI_AUTH_OIDC_PROVIDER_NAME: "Authentik"
+  GARAGE_UI_AUTH_OIDC_ISSUER_URL: "https://authentik.sud0.net/application/o/garage-ui/"
+  GARAGE_UI_AUTH_OIDC_SCOPES: |
+    - openid
+    - profile
+    - email
+  GARAGE_UI_AUTH_OIDC_ADMIN_ROLE: "garage-admin"
+  GARAGE_UI_AUTH_OIDC_ROLE_ATTRIBUTE_PATH: "groups"
+  GARAGE_UI_AUTH_OIDC_COOKIE_SECURE: "true"
