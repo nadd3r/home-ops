@@ -28,7 +28,7 @@ spec:
         containers:
           app:
             image:
-              repository: docker.io/noooste/garage-ui:latest
+              repository: docker.io/noooste/garage-ui
               tag: latest
             envFrom:
               - configMapRef:
