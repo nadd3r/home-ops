@@ -1,0 +1,51 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app garage-ui
+spec:
+  interval: 1h
+  chartRef:
+    kind: OCIRepository
+    name: garage-ui
+  install:
+    remediation:
+      retries: -1
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  values:
+    controllers:
+      garage-ui:
+        type: deployment
+        replicas: 1
+        serviceAccount:
+          identifier: *app
+        strategy: Recreate
+        annotations:
+          secret.reloader.stakater.com/reload: tls-garage-ui
+        containers:
+          app:
+            image:
+              repository: docker.io/noooste/garage-ui:latest
+              tag: latest
+            envFrom:
+              - configMapRef:
+                  name: garage-ui-env
+              - secretRef:
+                  name: garage-ui-secrets
+    service:
+      garage-ui:
+        forceRename: *app
+        controller: garage-ui
+        ports:
+          http:
+            port: 8080
+    route:
+      main:
+        hostnames:
+          - "garageui.sud0.net"
+        parentRefs:
+          - name: envoy-internal
+            namespace: network
