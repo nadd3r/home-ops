@@ -45,7 +45,7 @@ spec:
     route:
       main:
         hostnames:
-          - "garageui.sud0.net"
+          - "garageui.example.com"
         parentRefs:
           - name: envoy-internal
             namespace: network

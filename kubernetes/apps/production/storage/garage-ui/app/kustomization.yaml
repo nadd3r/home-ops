@@ -5,3 +5,9 @@ resources:
   - ../../../../base/storage/garage-ui/app
   - ./externalsecret.yaml
   - ./configmap.yaml
+
+patches:
+  - target:
+      kind: HelmRelease
+      name: garage-ui
+    path: ./helmrelease.yaml
