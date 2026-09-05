@@ -6,7 +6,7 @@ spec:
   schedule: "0 * * * *"
   discoveryFilters:
     - "nadd3r/home-ops"
-  image: renovate/renovate:44.65.2
+  image: renovate/renovate:44.65.5
   secretRef: "renovate-operator-secrets"
   provider:
     name: gitlab
