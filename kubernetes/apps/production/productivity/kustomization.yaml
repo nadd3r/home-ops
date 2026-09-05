@@ -6,3 +6,4 @@ namespace: productivity
 resources:
   - ./namespace.yaml
   - ./kanbn/
+  - ./renovate-operator/
