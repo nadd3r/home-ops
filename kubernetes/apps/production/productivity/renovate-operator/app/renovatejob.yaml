@@ -1,0 +1,25 @@
+apiVersion: renovate-operator.mogenius.com/v1alpha1
+kind: RenovateJob
+metadata:
+  name: renovate-job
+spec:
+  schedule: "0 * * * *"
+  discoveryFilters:
+    - "nadd3r/home-ops"
+  image: renovate/renovate:43.104.1
+  secretRef: "renovate-operator-secret"
+  provider:
+    name: gitlab
+    endpoint: "https://gitlab.com/api/v4"
+  parallelism: 1
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "128Mi"
+    limits:
+      cpu: "500m"
+      memory: "1Gi"
+  renovateConfig:
+    configMapRef:
+      name: renovate-operator-config
+      key: renovatorc.json5
