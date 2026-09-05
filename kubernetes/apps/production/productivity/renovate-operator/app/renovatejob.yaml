@@ -7,7 +7,7 @@ spec:
   discoveryFilters:
     - "nadd3r/home-ops"
   image: renovate/renovate:43.104.1
-  secretRef: "renovate-operator-secret"
+  secretRef: "renovate-operator-secrets"
   provider:
     name: gitlab
     endpoint: "https://gitlab.com/api/v4"
