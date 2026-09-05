@@ -1,7 +1,7 @@
 apiVersion: renovate-operator.mogenius.com/v1alpha1
 kind: RenovateJob
 metadata:
-  name: renovate-job
+  name: home-ops
 spec:
   schedule: "0 * * * *"
   discoveryFilters:
