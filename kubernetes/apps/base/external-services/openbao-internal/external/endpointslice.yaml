@@ -1,0 +1,20 @@
+---
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: openbao-internal
+  labels:
+    kubernetes.io/service-name: openbao-internal
+addressType: IPv4
+endpoints:
+  - addresses:
+      - 192.168.54.3
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+ports:
+  - name: http
+    port: 8200
+    protocol: TCP
+    appProtocol: http
