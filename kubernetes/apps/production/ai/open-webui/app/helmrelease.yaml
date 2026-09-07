@@ -19,4 +19,4 @@ spec:
     route:
       main:
         hostnames:
-          - "open-webui.example.com"
+          - "open-webui.sud0.net"
