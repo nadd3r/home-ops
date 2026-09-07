@@ -12,7 +12,7 @@ spec:
       namespace: network
       sectionName: https
   hostnames:
-    - openbao-internal.example.com
+    - openbao.internal.example.com
   rules:
     - backendRefs:
         - name: *app
