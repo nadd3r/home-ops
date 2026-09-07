@@ -41,7 +41,7 @@ spec:
               address = "https://bao.example.com"
               key_name = "openbao-unseal"
               mount_path = "transit/"
-              tls_skip_verify = "false"
+              tls_skip_verify = "true"
             }
       dataStorage:
         enabled: true
