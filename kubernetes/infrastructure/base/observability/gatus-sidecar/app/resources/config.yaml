@@ -34,15 +34,26 @@ storage:
   path: ${GATUS_CONFIG_PATH}/gatus.db
 
 ui:
-  title: Status | Gatus
+  title: Statusd0 | Gatus
+  description: Service Monitor
+  dashboard-heading: Sud0 Services
+  dashboard-subheading: If a service is red it may either be down for maintenance or actually broken. If the service is not restored in an hour then please reach out to me.
   header: Status
-  logo: https://secure.gravatar.com/avatar/7636c08277c2791c6f95aa9e3e18fb3a277943ec3e668c3b355c5484e5e06a4e?s=80&d=identicon
+  logo: https://gitlab.com/uploads/-/system/user/avatar/40901175/avatar.png?v=1788824686
   link: https://gitlab.com/nadd3r
   buttons:
     - name: Gitlab
       link: https://gitlab.com/nadd3r
     - name: Homelab
       link: https://gitlab.com/nadd3r/home-ops
+
+announcements:
+  - timestamp: 2026-09-07T19:55:00Z
+    type: warning
+    message: These services are currently being developed, as such they are likely to break or change over time.
+  - timestamp: 2026-09-07T19:55:00Z
+    type: information
+    message: Maintenance is planned for every Monday from 7PM to 10PM EST. This may not affect the services you use. If a service you use is affected keep an eye on this page for when it is available again.
 
 web:
   port: ${GATUS_WEB_PORT}
