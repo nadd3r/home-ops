@@ -5,4 +5,4 @@ metadata:
   name: &app openbao-internal
 spec:
   hostnames:
-    - openbao-internal.sud0.net
+    - openbao.internal.sud0.net
