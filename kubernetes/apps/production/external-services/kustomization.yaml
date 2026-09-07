@@ -6,5 +6,4 @@ namespace: external-services
 resources:
   - ./namespace.yaml
   - ./truenas/
-  - ./openbao-internal/
   - ./dockhand/
