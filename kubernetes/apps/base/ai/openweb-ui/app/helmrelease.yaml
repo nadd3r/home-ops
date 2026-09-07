@@ -1,0 +1,59 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app open-webui
+spec:
+  interval: 1h
+  chartRef:
+    kind: OCIRepository
+    name: open-webui
+  install:
+    remediation:
+      retries: -1
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  values:
+    controllers:
+      open-webui:
+        type: deployment
+        replicas: 1
+        serviceAccount:
+          identifier: *app
+        strategy: Recreate
+        annotations:
+          secret.reloader.stakater.com/reload: tls-open-webui
+        containers:
+          app:
+            image:
+              repository: ghcr.io/open-webui/open-webui
+              tag: latest
+            envFrom:
+              - configMapRef:
+                  name: open-webui-env
+              - secretRef:
+                  name: open-webui-secrets
+    service:
+      open-webui:
+        forceRename: *app
+        controller: open-webui
+        ports:
+          http:
+            port: 8080
+    route:
+      main:
+        hostnames:
+          - "open-webui.example.com"
+        parentRefs:
+          - name: envoy-internal
+            namespace: network
+    persistence:
+      main:
+        enabled: true
+        size: 32Gi
+        type: persistentVolumeClaim
+        accessMode: ReadWriteOnce
+        globalMounts:
+          - path: /app/backend/data
