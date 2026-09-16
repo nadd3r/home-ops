@@ -4,7 +4,7 @@ kind: Receiver
 metadata:
   name: flux-webhook
 spec:
-  type: gitlab
+  type: github
   events: ["Push Hook", "Tag Push Hook"]
   secretRef:
     name: flux-webhook-token
