@@ -9,8 +9,7 @@ spec:
   image: renovate/renovate:44.65.5
   secretRef: "renovate-operator-secrets"
   provider:
-    name: gitlab
-    endpoint: "https://gitlab.com/api/v4"
+    name: github
   parallelism: 1
   resources:
     requests:
