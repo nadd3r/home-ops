@@ -3,7 +3,7 @@ kind: RenovateJob
 metadata:
   name: home-ops
 spec:
-  schedule: "0 * * * *"
+  schedule: "0 20 * * 6"
   discoveryFilters:
     - "nadd3r/home-ops"
   image: renovate/renovate:44.65.5
