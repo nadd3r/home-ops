@@ -5,7 +5,7 @@ metadata:
   name: flux-webhook
 spec:
   type: github
-  events: ["Push Hook", "Tag Push Hook"]
+  events: ["push", "ping"]
   secretRef:
     name: flux-webhook-token
   resources:
