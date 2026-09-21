@@ -30,12 +30,12 @@ spec:
       - --crd-source-apiversion=externaldns.k8s.io/v1alpha1
       - --crd-source-kind=DNSEndpoint
       - --gateway-name=envoy-external
-      - --annotation-filter=external-dns.alpha.kubernetes.io/scope notin (internal)
+      - --gateway-namespace=network
     triggerLoopOnEvent: true
     policy: sync
     sources: ["crd", "gateway-httproute"]
     txtPrefix: k8s.
-    txtOwnerId: default
+    txtOwnerId: cloudflare
     domainFilters: ["sud0.net"]
     serviceMonitor:
       enabled: true
