@@ -4,7 +4,7 @@ kind: DNSEndpoint
 metadata:
   name: cluster-internal
   annotations:
-    external-dns.alpha.kubernetes.io/scope: internal
+    external-dns.kubernetes.io/scope: internal
 spec:
   endpoints:
     - dnsName: "internal.sud0.net"

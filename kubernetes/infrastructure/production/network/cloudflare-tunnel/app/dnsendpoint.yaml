@@ -4,7 +4,7 @@ kind: DNSEndpoint
 metadata:
   name: cloudflare-tunnel
   annotations:
-    external-dns.alpha.kubernetes.io/scope: external
+    external-dns.kubernetes.io/scope: external
 spec:
   endpoints:
     - dnsName: "external.sud0.net"
