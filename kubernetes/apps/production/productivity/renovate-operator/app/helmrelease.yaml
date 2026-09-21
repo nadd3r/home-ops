@@ -11,3 +11,12 @@ spec:
     route:
       hostnames:
         - renovate.sud0.net
+    auth:
+      oidc:
+        enabled: true
+        issuerUrl: "https://authentik.sud0.net/application/o/renovate/"
+        clientId: "Zzmo3SBnyONlLXYz9vyeU6DLdr32NhoKzZxx2WO7"
+        existingSecret: "renovate-operator-secrets"
+        secretKey: "client-secret"
+        additionalScopes: ["groups"]
+        fetchUserInfoGroups: false
