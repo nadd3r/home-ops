@@ -31,6 +31,7 @@ spec:
       - --crd-source-kind=DNSEndpoint
       - --gateway-name=envoy-external
       - --gateway-namespace=network
+      - --annotation-filter=external-dns.kubernetes.io/scope notin (internal)
     triggerLoopOnEvent: true
     policy: sync
     sources: ["crd", "gateway-httproute"]
