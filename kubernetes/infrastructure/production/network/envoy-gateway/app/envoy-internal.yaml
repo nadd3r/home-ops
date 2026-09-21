@@ -4,11 +4,11 @@ kind: Gateway
 metadata:
   name: envoy-internal
   annotations:
-    external-dns.alpha.kubernetes.io/target: internal.sud0.net
+    external-dns.kubernetes.io/target: internal.sud0.net
 spec:
   infrastructure:
     annotations:
-      external-dns.alpha.kubernetes.io/hostname: internal.sud0.net
+      external-dns.kubernetes.io/hostname: internal.sud0.net
       lbipam.cilium.io/ips: "192.168.22.10"
   listeners:
     - name: http
