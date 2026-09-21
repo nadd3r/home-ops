@@ -31,7 +31,7 @@ spec:
       - --gateway-name=envoy-internal
       - --gateway-namespace=network
       - --registry=noop
-      - --annotation-filter=external-dns.alpha.kubernetes.io/scope notin (external)
+      - --annotation-filter=external-dns.kubernetes.io/scope notin (external)
     triggerLoopOnEvent: true
     policy: sync
     sources: ["crd", "gateway-httproute"]
