@@ -11,6 +11,16 @@ spec:
     route:
       hostnames:
         - renovate.sud0.net
+    authorization:
+      defaults:
+        readerGroups:
+          - renovate-readers
+        adminGroups:
+          - renovate-admins
+        readerUsers: []
+        adminUsers: []
+        anonymousRead: false
+        anonymousReadLogs: false
     auth:
       oidc:
         enabled: true
