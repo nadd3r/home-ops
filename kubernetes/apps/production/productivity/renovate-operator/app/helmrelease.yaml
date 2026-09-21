@@ -20,3 +20,6 @@ spec:
         secretKey: "client-secret"
         additionalScopes: ["groups"]
         fetchUserInfoGroups: false
+        redirectUrl: "https://renovate.sud0.net"
+        redirectScheme: "https"
+        allowedGroupPattern: "renovate-admins"
