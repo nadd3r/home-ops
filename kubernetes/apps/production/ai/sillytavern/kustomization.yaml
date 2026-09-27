@@ -1,0 +1,14 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../../base/ai/sillytavern/ks.yaml
+
+patches:
+  - target:
+      kind: Kustomization
+      name: sillytavern
+    patch: |-
+      - op: replace
+        path: /spec/path
+        value: ./kubernetes/apps/production/ai/sillytavern/app
