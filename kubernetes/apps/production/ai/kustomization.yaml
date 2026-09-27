@@ -6,3 +6,4 @@ namespace: ai
 resources:
   - ./namespace.yaml
   - ./open-webui/
+  - ./sillytavern/
