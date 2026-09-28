@@ -39,15 +39,20 @@ ui:
   dashboard-heading: Sud0 Services
   dashboard-subheading: If a service is red it may either be down for maintenance or actually broken. If the service is not restored in an hour then please reach out to me.
   header: Status
-  logo: https://gitlab.com/uploads/-/system/user/avatar/40901175/avatar.png?v=1788824686
-  link: https://gitlab.com/nadd3r
+  logo: https://avatars.githubusercontent.com/u/119909751
+  link: https://github.com/nadd3r
   buttons:
-    - name: Gitlab
-      link: https://gitlab.com/nadd3r
+    - name: Github
+      link: https://github.com/nadd3r
     - name: Homelab
-      link: https://gitlab.com/nadd3r/home-ops
+      link: https://github.com/nadd3r/home-ops
+    - name: Helm-Charts
+      link: https://github.com/nadd3r/helm-charts
 
 announcements:
+  - timestamp: 2026-09-28T18:00:00Z
+    type: Warning
+    message: Weekly maintenance is between Saturday 9PM and Sunday 9AM. Should you experience interruptions outside of this time please inform me.
   - timestamp: 2026-09-07T19:55:00Z
     type: warning
     message: These services are currently being developed, as such they are likely to break or change over time.
