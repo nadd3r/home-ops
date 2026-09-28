@@ -51,7 +51,7 @@ ui:
 
 announcements:
   - timestamp: 2026-09-28T18:00:00Z
-    type: Warning
+    type: warning
     message: Weekly maintenance is between Saturday 9PM and Sunday 9AM. Should you experience interruptions outside of this time please inform me.
   - timestamp: 2026-09-07T19:55:00Z
     type: warning
