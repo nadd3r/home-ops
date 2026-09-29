@@ -24,6 +24,14 @@ spec:
             secretKeyRef:
               name: authentik-db-app
               key: password
+        - name: AUTHENTIK_EMAIL__PORT
+          value: "465"
+        - name: AUTHENTIK_EMAIL__USE_TLS
+          value: "false"
+        - name: AUTHENTIK_EMAIL__USE_SSL
+          value: "true"
+        - name: AUTHENTIK_EMAIL__TIMEOUT
+          value: "10"
       envFrom:
         - secretRef:
             name: authentik-secrets
