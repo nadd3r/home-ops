@@ -3,17 +3,11 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ../../../../base/security/vaultwarden/app
+  - configmap.yaml
+  - externalsecret.yaml
 
 patches:
   - target:
       kind: HelmRelease
       name: vaultwarden
     path: ./helmrelease.yaml
-  - target:
-      kind: HTTPRoute
-      name: vaultwarden-internal
-    path: ./httproute.yaml
-  - target:
-      kind: ConfigMap
-      name: vaultwarden-env
-    path: ./configmap.yaml
