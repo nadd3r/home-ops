@@ -39,11 +39,6 @@ spec:
       autoscaling:
         enabled: true
         minReplicas: 1
-      resources:
-        requests:
-          cpu: 200m
-        limits:
-          memory: 1Gi
       metrics:
         prometheus:
           serviceMonitor:
@@ -64,8 +59,3 @@ spec:
       autoscaling:
         enabled: true
         minReplicas: 1
-      resources:
-        requests:
-          cpu: 200m
-        limits:
-          memory: 1Gi
