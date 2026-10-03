@@ -9,6 +9,6 @@ spec:
     operation: copy
   provider: generic
   ref:
-    tag: 6.3.0
+    tag: 6.4.0
   timeout: 60s
   url: oci://ghcr.io/mogenius/helm-charts/renovate-operator
