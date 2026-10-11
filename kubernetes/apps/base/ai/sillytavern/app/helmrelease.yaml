@@ -27,7 +27,7 @@ spec:
       enabled: true
       size: 8Gi
     config:
-      basicAuthMode: "false"
+      basicAuthMode: false
       hostWhitelist:
         enabled: "true"
         hosts:
