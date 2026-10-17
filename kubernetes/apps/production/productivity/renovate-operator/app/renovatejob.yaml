@@ -6,7 +6,7 @@ spec:
   schedule: "0 20 * * 6"
   discoveryFilters:
     - "nadd3r/home-ops"
-  image: renovate/renovate:44.132.5
+  image: renovate/renovate:44.166.0
   secretRef: "renovate-operator-secrets"
   provider:
     name: github
