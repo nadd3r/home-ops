@@ -1,12 +1,10 @@
-# Disable built-in CNI to use Cilium
-cluster:
-  network:
-    cni:
-      name: none
-    podSubnets: ["10.42.0.0/16"]
-    serviceSubnets: ["10.43.0.0/16"]
 machine:
   certSANs:
     - "localhost"
     - "127.0.0.1"
     - "k8s.internal.production"
+---
+apiVersion: v1alpha1
+kind: KubeNetworkConfig
+podSubnets: ["10.42.0.0/16"]
+serviceSubnets: ["10.43.0.0/16"]
