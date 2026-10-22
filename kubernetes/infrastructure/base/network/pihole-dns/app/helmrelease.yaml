@@ -11,13 +11,6 @@ spec:
   values:
     fullnameOverride: *app
     provider: pihole
-    resources:
-      requests:
-        cpu: 5m
-        memory: 25Mi
-      limits:
-        cpu: 10m
-        memory: 50Mi
     env:
       - name: EXTERNAL_DNS_PIHOLE_PASSWORD
         valueFrom:
