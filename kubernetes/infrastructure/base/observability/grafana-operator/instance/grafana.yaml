@@ -59,7 +59,7 @@ spec:
   httpRoute:
     spec:
       hostnames:
-        - grafana.sud0.net
+        - grafana.example.com
       parentRefs:
         - name: envoy-internal
           namespace: network

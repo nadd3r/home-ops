@@ -1,0 +1,22 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: cloudflare-tunnel
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: cloudflare-tunnel
+  interval: 1h
+  values:
+    configMaps:
+      config:
+        data:
+          config.yaml: |-
+            ingress:
+              - hostname: "*.sud0.net"
+                originRequest:
+                  http2Origin: true
+                  originServerName: external.sud0.net
+                service: https://envoy-external.{{ .Release.Namespace }}.svc.cluster.local:443
+              - service: http_status:404

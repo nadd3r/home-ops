@@ -11,13 +11,6 @@ spec:
   values:
     fullnameOverride: *app
     provider: cloudflare
-    resources:
-      requests:
-        cpu: 5m
-        memory: 25Mi
-      limits:
-        cpu: 10m
-        memory: 50Mi
     env:
       - name: CF_API_TOKEN
         valueFrom:
@@ -37,7 +30,7 @@ spec:
     sources: ["crd", "gateway-httproute"]
     txtPrefix: k8s.
     txtOwnerId: cloudflare
-    domainFilters: ["sud0.net"]
+    domainFilters: ["example.com"]
     serviceMonitor:
       enabled: true
     podAnnotations:
