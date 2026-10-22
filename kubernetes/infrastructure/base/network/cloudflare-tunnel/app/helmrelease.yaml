@@ -18,7 +18,7 @@ spec:
           app:
             image:
               repository: docker.io/cloudflare/cloudflared
-              tag: 2026.9.3
+              tag: 2026.10.1
             env:
               NO_AUTOUPDATE: true
               TUNNEL_METRICS: 0.0.0.0:8080
@@ -64,17 +64,6 @@ spec:
       app:
         endpoints:
           - port: http
-    configMaps:
-      config:
-        data:
-          config.yaml: |-
-            ingress:
-              - hostname: "*.sud0.net"
-                originRequest:
-                  http2Origin: true
-                  originServerName: external.sud0.net
-                service: https://envoy-external.{{ .Release.Namespace }}.svc.cluster.local:443
-              - service: http_status:404
     persistence:
       config-file:
         type: configMap

@@ -5,3 +5,9 @@ resources:
   - ../../../../base/network/cloudflare-tunnel/app
   - ./externalsecret.yaml
   - ./dnsendpoint.yaml
+
+patches:
+  - target:
+      name: cloudflare-tunnel
+      kind: HelmRelease
+    path: ./helmrelease.yaml

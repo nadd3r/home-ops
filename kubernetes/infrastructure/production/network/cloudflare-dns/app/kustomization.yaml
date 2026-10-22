@@ -4,3 +4,9 @@ kind: Kustomization
 resources:
   - ../../../../base/network/cloudflare-dns/app
   - ./externalsecret.yaml
+
+patches:
+  - target:
+      name: cloudflare-dns
+      kind: HelmRelease
+    path: ./helmrelease.yaml
