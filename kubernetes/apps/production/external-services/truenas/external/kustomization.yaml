@@ -2,10 +2,10 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ../../../../base/external-services/truenas-internal/external
+  - ../../../../base/external-services/truenas/external
 
 patches:
   - target:
       kind: HTTPRoute
-      name: truenas-internal
+      name: truenas
     path: ./httproute.yaml
