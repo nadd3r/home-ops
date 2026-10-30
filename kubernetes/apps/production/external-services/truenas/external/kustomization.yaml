@@ -9,3 +9,7 @@ patches:
       kind: HTTPRoute
       name: truenas
     path: ./httproute.yaml
+  - target:
+      kind: HTTPRoute
+      name: truenas-internal
+    path: ./httproute1.yaml
