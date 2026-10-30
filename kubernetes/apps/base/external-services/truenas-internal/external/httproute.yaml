@@ -12,7 +12,7 @@ spec:
       namespace: network
       sectionName: https
   hostnames:
-    - truenas-internal.example.com
+    - truenas.internal.example.com
   rules:
     - backendRefs:
         - name: *app
