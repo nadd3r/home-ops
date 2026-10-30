@@ -5,4 +5,4 @@ metadata:
   name: &app truenas
 spec:
   hostnames:
-    - truenas.sud0.net
+    - truenas.internal.sud0.net
