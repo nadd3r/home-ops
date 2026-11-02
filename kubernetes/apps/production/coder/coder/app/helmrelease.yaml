@@ -1,0 +1,51 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app coder
+spec:
+  interval: 1h
+  chartRef:
+    kind: OCIRepository
+    name: coder
+  install:
+    remediation:
+      retries: -1
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  values:
+    coder:
+      env:
+        - name: CODER_PG_CONNECTION_URL
+          valueFrom:
+            secretKeyRef:
+              name: coder-db-app
+              key: uri
+        - name: CODER_PROMETHEUS_ADDRESS
+          value: "0.0.0.0:2112"
+        - name: CODER_ACCESS_URL
+          value: "https://coder.sud0.net"
+        - name: CODER_OIDC_ISSUER_URL
+          value: "https://authentik.sud0.net/application/o/coder/"
+        - name: CODER_OIDC_EMAIL_DOMAIN
+          value: "pm.me,protonmail.com"
+        - name: CODER_OIDC_SCOPES
+          value: "openid,profile,email,offline_access"
+        - name: CODER_OIDC_SIGN_IN_TEXT
+          value: "Log in with Authentik"
+        - name: CODER_OIDC_ICON_URL
+          value: "https://authentik.sud0.net/static/dist/assets/icons/icon.svg"
+        - name: CODER_OIDC_CLIENT_ID
+          valueFrom:
+            secretKeyRef:
+              name: coder-oidc-secrets
+              key: client-id
+        - name: CODER_OIDC_CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: coder-oidc-secrets
+              key: client-secret
+      httproute:
+        host: "coder.sud0.net"
