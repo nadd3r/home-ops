@@ -1,0 +1,25 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app coder
+spec:
+  interval: 1h
+  chartRef:
+    kind: OCIRepository
+    name: coder
+  install:
+    remediation:
+      retries: -1
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  values:
+    coder:
+      httproute:
+        enable: true
+        parentRefs:
+          - name: envoy-internal
+            namespace: network
+        host: "coder.example.com"
