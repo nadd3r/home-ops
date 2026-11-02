@@ -41,11 +41,11 @@ spec:
           valueFrom:
             secretKeyRef:
               name: coder-oidc-secrets
-              key: client-id
+              key: CODER_OIDC_CLIENT_ID
         - name: CODER_OIDC_CLIENT_SECRET
           valueFrom:
             secretKeyRef:
               name: coder-oidc-secrets
-              key: client-secret
+              key: CODER_OIDC_CLIENT_SECRET
       httproute:
         host: "coder.sud0.net"
