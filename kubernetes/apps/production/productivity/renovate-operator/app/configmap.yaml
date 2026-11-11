@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: renovate-operator-config
 data:
-  renovatorc.json5: |
+  home-ops.json5: |
     {
       $schema: "https://docs.renovatebot.com/renovate-schema.json",
       extends: [
@@ -89,6 +89,50 @@ data:
         {
           matchUpdateTypes: ["digest"],
           addLabels: ["type/digest"],
+        },
+      ],
+    }
+  helm-charts.json5: |
+    {
+      $schema: "https://docs.renovatebot.com/renovate-schema.json",
+      extends: [
+        "github>home-operations/renovate-presets#8.1.0",
+        "github>home-operations/renovate-presets//apps/grafanaDashboards.json5#8.1.0",
+        "github>home-operations/renovate-presets//apps/talosFactory.json5#8.1.0",
+        ":timezone(America/New_York)",
+      ],
+      lockFileMaintenance: {
+        enabled: true,
+        schedule: ["before 3am on the first day of the month"],
+        commitMessageExtra: "({{manager}})",
+        additionalBranchPrefix: "{{manager}}-",
+      },
+      packageRules: [
+        // Grouping rules
+        {
+          description: "Helm Charts Group",
+          groupName: "helm-charts",
+          matchDatasources: ["helm"],
+          matchPackageNames: ["*"],
+          group: {
+            commitMessageTopic: "{{{grouName}}} group",
+          },
+          minimumGroupSize: 1,
+        },
+        {
+          matchDatasources: ["helm"],
+          matchUpdateTypes: ["major"],
+          addLabels: ["type/major"],
+        },
+        {
+          matchDatasources: ["helm"],
+          matchUpdateTypes: ["minor"],
+          addLabels: ["type/minor"],
+        },
+        {
+          matchDatasources: ["helm"],
+          matchUpdateTypes: ["patch"],
+          addLabels: ["type/patch"],
         },
       ],
     }
