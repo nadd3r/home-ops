@@ -25,17 +25,35 @@ spec:
         - sillytavern.example.com
     persistence:
       enabled: true
-      size: 8Gi
-    config:
-      basicAuthMode: false
-      hostWhitelist:
-        enabled: "true"
+      size: 10Gi
+    livenessProbe:
+      exec:
+        command: ["sh", "-c", "node", "src/healthcheck.js"]
+      initialDelaySeconds: 15
+      periodSeconds: 5
+      failureThreshold: 2
+    readinessProbe:
+      exec:
+        command: ["sh", "-c", "node", "src/healthcheck.js"]
+      initialDelaySeconds: 20
+      periodSeconds: 5
+      failureThreshold: 5
+    sillytavern:
+      enableUserAccounts: true
+      defaultUser:
+        existingSecret:
+          name: sillytavern-secrets
+          key: admin-password
+      enableDiscreetLogin: true
+      sso:
+        aithentikAuth: true
+        trustedProxies:
+          - 10.42.0.0/16
+          - 10.43.0.0/16
+      hostWhiteList:
+        enabled: true
         hosts:
           - sillytavern.example.com
-      sso:
-        authentikAuth: "true"
-        trustedProxies:
-          - 10.43.0.0/16
-          - 10.42.0.0/16
-      enableUserAccounts: "true"
-      enableDiscreetLogin: "true"
+      privateAddressWhitelist:
+        allowedRanges:
+          - "192.168.1.0/24"
