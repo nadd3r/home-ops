@@ -46,7 +46,7 @@ spec:
           key: admin-password
       enableDiscreetLogin: true
       sso:
-        aithentikAuth: true
+        authentikAuth: true
         trustedProxies:
           - 10.42.0.0/16
           - 10.43.0.0/16
