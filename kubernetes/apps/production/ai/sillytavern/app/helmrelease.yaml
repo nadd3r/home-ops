@@ -4,26 +4,15 @@ kind: HelmRelease
 metadata:
   name: &app sillytavern
 spec:
-  interval: 1h
-  chartRef:
-    kind: OCIRepository
-    name: sillytavern
-  install:
-    remediation:
-      retries: -1
-  upgrade:
-    cleanupOnFail: true
-    remediation:
-      retries: 3
   values:
     httpRoute:
       hostnames:
         - sillytavern.sud0.net
-    config:
-      hostWhitelist:
+    sillytavern:
+      enableDiscreetLogin: true
+      hostWhiteList:
         hosts:
           - sillytavern.sud0.net
-      adminUserPassword:
-        existingSecret:
-          name: sillytavern-secrets
-          key: admin-password
+      privateAddressWhitelist:
+        allowedRanges:
+          - "192.168.20.0/24"
