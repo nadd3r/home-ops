@@ -21,4 +21,29 @@ spec:
   renovateConfig:
     configMapRef:
       name: renovate-operator-config
-      key: renovatorc.json5
+      key: home-ops.json5
+---
+apiVersion: renovate-operator.mogenius.com/v1alpha1
+kind: RenovateJob
+metadata:
+  name: helm-charts
+spec:
+  schedule: "0 20 * * 6"
+  discoveryFilters:
+    - "nadd3r/helm-charts"
+  image: renovate/renovate:44.199.2
+  secretRef: "renovate-operator-secrets"
+  provider:
+    name: github
+  parallelism: 1
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "128Mi"
+    limits:
+      cpu: "500m"
+      memory: "1Gi"
+  renovateConfig:
+    configMapRef:
+      name: renovate-operator-config
+      key: helm-charts.json5
