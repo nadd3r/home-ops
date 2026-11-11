@@ -18,7 +18,7 @@ spec:
             name: &secret pihole-dns-secret
             key: EXTERNAL_DNS_PIHOLE_PASSWORD
     extraArgs:
-      - --pihole-server=https://pihole1.sud0.net
+      - --pihole-server=https://pihole1.internal.sud0.net
       - --crd-source-apiversion=externaldns.k8s.io/v1alpha1
       - --crd-source-kind=DNSEndpoint
       - --gateway-name=envoy-internal
