@@ -1,6 +1,7 @@
-machine:
-  network:
-    disableSearchDomain: true
-    nameservers:
-      - 192.168.54.2
-      - 192.168.54.3
+apiVersion: v1alpha1
+kind: ResolverConfig
+nameservers:
+  - address: 192.168.54.2
+  - address: 192.168.54.3
+searchDomains:
+  disableDefault: true
