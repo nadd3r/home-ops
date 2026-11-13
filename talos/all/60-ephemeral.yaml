@@ -2,4 +2,4 @@ apiVersion: v1alpha1
 kind: VolumeConfig
 name: EPHEMERAL
 provisioning:
-  maxSize: 64GiB
+  maxSize: 256GiB
