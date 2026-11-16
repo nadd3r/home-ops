@@ -25,6 +25,6 @@ __pycache__/
 .venv/
 .DS_Store
 Thumbs.db
-/talos/output/
-/talos/rendered/
+**/output/
+**/rendered/
 .testing/

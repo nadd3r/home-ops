@@ -9,39 +9,39 @@ kubernetes_dir := justfile_dir() + '/kubernetes'
 
 [doc('Bootstrap the Talos cluster')]
 [group('bootstrap')]
-talos: talos-secret talos-apply talos-talosconfig talos-kubeconfig
+talos cluster: (talos-secret cluster) (talos-apply cluster) (talos-talosconfig cluster) (talos-kubeconfig cluster)
 
 [doc('Bootstrap apps into the Talos cluster')]
 [group('bootstrap')]
-apps: apps-ready apps-namespaces apps-secrets apps-crds apps-helm
+apps: apps-ready apps-namespaces apps-crds apps-helm
     just log info "Cluster is bootstrapped — Flux will start syncing the Git repository"
 
 # No sops call or existence guard is needed: the bundle is stored already
 # encrypted with the repo's age recipient, and existing bundles are left
 # untouched.
 [private]
-[working-directory('../talos')]
-talos-secret:
+[working-directory('../talos/' + cluster)]
+talos-secret cluster:
     just log info "Generating secrets" stage "{{ recipe_name() }}"
     topf secrets --confirm=false > /dev/null
 
 [private]
-[working-directory('../talos')]
-talos-apply:
+[working-directory('../talos/' + cluster)]
+talos-apply cluster:
     just log info "Applying talos config and bootstrapping" stage "{{ recipe_name() }}"
     topf apply --auto-bootstrap --confirm=false
 
 [private]
-[working-directory('../talos')]
-talos-talosconfig:
+[working-directory('../talos/' + cluster)]
+talos-talosconfig cluster:
     just log info "Generating talosconfig" stage "{{ recipe_name() }}"
     topf talosconfig > talosconfig
 
 # topf issues short-lived admin certs by default; 8760h keeps the
 # kubeconfig usable long-term.
 [private]
-[working-directory('../talos')]
-talos-kubeconfig:
+[working-directory('../talos/' + cluster)]
+talos-kubeconfig cluster:
     just log info "Fetching kubeconfig" stage "{{ recipe_name() }}"
     topf kubeconfig --validity 8760h > "{{ justfile_dir() }}/kubeconfig"
 
@@ -62,7 +62,7 @@ apps-helm:
 [private]
 apps-namespaces:
     just log info "Applying namespaces for apps" stage "{{ recipe_name() }}"
-    for app in "{{ kubernetes_dir }}/apps"/*/; do
+    for app in "{{ kubernetes_dir }}/infrastructure/base"/*/; do
         ns="$(basename "$app")"
         if kubectl create namespace "$ns" --dry-run=client -o yaml \
                 | kubectl apply --server-side --filename - &>/dev/null; then
@@ -72,22 +72,22 @@ apps-namespaces:
         fi
     done
 
-[private]
-apps-secrets:
-    just log info "Applying secrets for apps" stage "{{ recipe_name() }}"
-    for secret in \
-        "{{ source_directory() }}/deploy-key.sops.yaml" \
-        "{{ source_directory() }}/sops-age.sops.yaml" \
-        "{{ kubernetes_dir }}/components/sops/cluster-secrets.sops.yaml"
-    do
-        name="$(basename "$secret" .sops.yaml)"
-        if sops decrypt "$secret" \
-                | kubectl --namespace flux-system apply --server-side --filename - &>/dev/null; then
-            just log info "Secret applied" resource "$name"
-        else
-            just log fatal "Failed to apply secret" resource "$name"
-        fi
-    done
+# [private]
+# apps-secrets:
+#     just log info "Applying secrets for apps" stage "{{ recipe_name() }}"
+#     for secret in \
+#         "{{ source_directory() }}/deploy-key.sops.yaml" \
+#         "{{ source_directory() }}/sops-age.sops.yaml" \
+#         "{{ kubernetes_dir }}/components/sops/cluster-secrets.sops.yaml"
+#     do
+#         name="$(basename "$secret" .sops.yaml)"
+#         if sops decrypt "$secret" \
+#                 | kubectl --namespace flux-system apply --server-side --filename - &>/dev/null; then
+#             just log info "Secret applied" resource "$name"
+#         else
+#             just log fatal "Failed to apply secret" resource "$name"
+#         fi
+#     done
 
 # Wait until nodes register as Ready=False. They only become Ready=True once the CNI is healthy.
 [private]

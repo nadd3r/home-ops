@@ -4,6 +4,7 @@ helmDefaults:
   forceConflicts: true
   wait: true
   waitForJobs: true
+  serverSide: true
 
 bases:
   - default.yaml
