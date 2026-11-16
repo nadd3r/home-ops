@@ -1,0 +1,46 @@
+---
+clusterName: kubernetes
+clusterEndpoint: https://192.168.20.220:6443
+
+talosVersion: v1.14.6
+kubernetesVersion: v1.37.0
+
+secretsPath: secrets.sops.yaml
+
+nodes:
+  - host: "t51v"
+    ip: "192.168.20.231"
+    role: control-plane
+    schematicId: "17bd088c71807ae797c16e85efb133b27814f1a333312bf597c3d4bc6f7c13d7"
+    secureboot: true
+    data:
+      installDisk: "/dev/disk/by-id/ata-QEMU_HARDDISK_zOwlA7r2"
+      installDiskSerial: ""
+      macAddr: "00:a0:98:03:3f:d6"
+      mtu: 9000
+      encryptDisk: false
+      kernelModules: []
+  - host: "t52v"
+    ip: "192.168.20.232"
+    role: control-plane
+    schematicId: "17bd088c71807ae797c16e85efb133b27814f1a333312bf597c3d4bc6f7c13d7"
+    secureboot: true
+    data:
+      installDisk: "/dev/disk/by-id/ata-QEMU_HARDDISK_Fd3Rkbx9"
+      installDiskSerial: ""
+      macAddr: "00:a0:98:2b:c2:0a"
+      mtu: 9000
+      encryptDisk: false
+      kernelModules: []
+  - host: "t53v"
+    ip: "192.168.20.233"
+    role: control-plane
+    schematicId: "17bd088c71807ae797c16e85efb133b27814f1a333312bf597c3d4bc6f7c13d7"
+    secureboot: true
+    data:
+      installDisk: "/dev/disk/by-id/ata-QEMU_HARDDISK_QB58JjMI"
+      installDiskSerial: ""
+      macAddr: "00:a0:98:74:95:70"
+      mtu: 9000
+      encryptDisk: false
+      kernelModules: []
