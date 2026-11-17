@@ -1,0 +1,12 @@
+---
+apiVersion: externaldns.k8s.io/v1alpha1
+kind: DNSEndpoint
+metadata:
+  name: cloudflare-tunnel
+  annotations:
+    external-dns.kubernetes.io/scope: external
+spec:
+  endpoints:
+    - dnsName: "external.tsud0.net"
+      recordType: CNAME
+      targets: ["be776a22-8b65-4cd6-9fd2-b0d219945676.cfargotunnel.com"]
