@@ -9,4 +9,4 @@ spec:
   endpoints:
     - dnsName: "external.tsud0.net"
       recordType: CNAME
-      targets: ["0f87c0e2-fec7-461d-bfd6-962a9df95d58.cfargotunnel.com"]
+      targets: ["445bd910-9827-4be1-9d7d-3ba3642c7a5c.cfargotunnel.com"]

@@ -17,6 +17,6 @@ spec:
               - hostname: "*.tsud0.net"
                 originRequest:
                   http2Origin: true
-                  originServerName: external.sud0.net
+                  originServerName: external.tsud0.net
                 service: https://envoy-external.{{ .Release.Namespace }}.svc.cluster.local:443
               - service: http_status:404
