@@ -5,3 +5,9 @@ resources:
   - ../../../../base/network/pihole-dns/app
   - ./externalsecret.yaml
   - ./dnsendpoint.yaml
+
+patches:
+  - target:
+      name: pihole-dns
+      kind: HelmRelease
+    path: ./helmrelease.yaml
