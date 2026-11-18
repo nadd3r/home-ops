@@ -15,8 +15,6 @@ spec:
       bucket: bucket-name
       endpoint: garage-s3.internal.sud0.net
       region: us-east-1
-      tls:
-        disableTls: true
   encryption:
     passwordSecretRef:
       name: kopiur-repository-secret
