@@ -1,0 +1,14 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: rook-ceph-cluster
+spec:
+  values:
+    cephClusterSpec:
+      storage:
+        devicePathFilter: "/dev/sdb"
+    route:
+      dashboard:
+        host:
+          name: rook.tsud0.net
