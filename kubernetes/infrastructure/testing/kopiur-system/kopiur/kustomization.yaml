@@ -18,4 +18,4 @@ patches:
     patch: |-
       - op: replace
         path: /spec/path
-        value: ./kubernetes/infrastructure/testing/kopiur-system/kopiur/app
+        value: ./kubernetes/infrastructure/testing/kopiur-system/kopiur/repository
