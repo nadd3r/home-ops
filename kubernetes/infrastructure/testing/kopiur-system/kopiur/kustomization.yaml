@@ -7,7 +7,14 @@ resources:
 patches:
   - target:
       kind: Kustomization
-      name: flux-instance
+      name: kopiur
+    patch: |-
+      - op: replace
+        path: /spec/path
+        value: ./kubernetes/infrastructure/testing/kopiur-system/kopiur/app
+  - target:
+      kind: Kustomization
+      name: kopiur-repository
     patch: |-
       - op: replace
         path: /spec/path
