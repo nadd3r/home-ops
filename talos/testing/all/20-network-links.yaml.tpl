@@ -12,6 +12,12 @@ links:
   - ethSel0
 bondMode: active-backup
 mtu: {{ .Node.Data.mtu }}
+---
+apiVersion: v1alpha1
+kind: VLANConfig
+name: bond0.20
+parent: bond0
+vlanID: 20
 addresses:
   - address: "{{ .Node.IP }}/24"
 routes:
