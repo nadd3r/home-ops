@@ -21,6 +21,8 @@ kind: Kustomization
 metadata:
   name: openbao-database
 spec:
+  dependsOn:
+    - name: external-secrets-config
   interval: 1h
   path: ./kubernetes/infrastructure/<cluster>/external-secrets/openbao/database
   prune: true
