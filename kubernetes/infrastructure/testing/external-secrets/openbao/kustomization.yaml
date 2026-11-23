@@ -1,0 +1,21 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../../base/external-secrets/openbao/ks.yaml
+
+patches:
+  - target:
+      kind: Kustomization
+      name: openbao
+    patch: |-
+      - op: replace
+        path: /spec/path
+        value: ./kubernetes/infrastructure/testing/external-secrets/openbao/app
+  - target:
+      kind: Kustomization
+      name: openbao-database
+    patch: |-
+      - op: replace
+        path: /spec/path
+        value: ./kubernetes/infrastructure/testing/external-secrets/openbao/database
