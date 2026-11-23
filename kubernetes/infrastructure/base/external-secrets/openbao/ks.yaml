@@ -22,7 +22,7 @@ metadata:
   name: openbao-database
 spec:
   dependsOn:
-    - name: external-secrets
+    - name: external-secrets-config
   interval: 1h
   path: ./kubernetes/infrastructure/<cluster>/external-secrets/openbao/database
   prune: true
