@@ -2,7 +2,7 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: OCIRepository
 metadata:
-  name: external-secrets-configs
+  name: external-secrets-config
 spec:
   interval: 15m
   layerSelector:
