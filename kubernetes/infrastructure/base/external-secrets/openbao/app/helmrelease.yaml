@@ -19,35 +19,6 @@ spec:
       ha:
         enabled: true
         replicas: 3
-        raft:
-          enabled: true
-          setNodeID: true
-          config: |
-            ui = true
-
-            listener "tcp" {
-              tls_disable = 1
-              address = "[::]:8200"
-              cluster_address = "[::]:8201"
-            }
-
-            storage "raft" {
-              path = "/openbao/data"
-            }
-
-            service_registration "kubernetes" {}
-
-            seal "transit" {
-              address = "https://bao.example.com"
-              key_name = "openbao-unseal"
-              mount_path = "transit/"
-              tls_skip_verify = "false"
-            }
-      dataStorage:
-        enabled: true
-        size: 10Gi
-        storageClass: local-path
-        accessMode: ReadWriteOnce
 
       resources:
         requests:
@@ -56,16 +27,28 @@ spec:
         limits:
           memory: 512Mi
 
+      extraEnvironmentVars:
+        PGHOST: openbao-db-cluster-pooler-rw
+        PGPORT: "5432"
+        PGDATABASE: openbao-db
+        PGSSLMODE: disable
+
       extraSecretEnvironmentVars:
         - envName: VAULT_TOKEN
           secretName: openbao-transit-token
           secretKey: token
+        - envName: PGUSER
+          secretName: openbao-db-cluster-app
+          secretKey: username
+        - envName: PGPASSWORD
+          secretName: openbao-db-cluster-app
+          secretKey: password
 
       gateway:
         httpRoute:
           enabled: True
           hosts:
-            - bao.example.com
+            - openbao.example.com
           parentRefs:
             - name: envoy-internal
               namespace: network
