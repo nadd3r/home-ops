@@ -1,0 +1,10 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: "tsud0-testing"
+spec:
+  dnsNames:
+    - "tsud0.net"
+    - "*.tsud0.net"
+  secretName: "tsud0-testing-tls"
