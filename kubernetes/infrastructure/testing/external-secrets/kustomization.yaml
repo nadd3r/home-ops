@@ -7,3 +7,4 @@ resources:
   - ./namespace.yaml
   - ./external-secrets/
   - ./openbao/
+  - ./external-secrets-config/
