@@ -9,16 +9,17 @@ spec:
     name: external-secrets-config
   interval: 1h
   values:
-    openbao:
-      provider:
-        vault:
-          auth:
-            kubernetes:
-              mountPath: kubernetes
-              role: external-secrets
-              serviceAccountRef:
-                name: external-secrets
-                namespace: external-secrets
-          path: kv
-          server: http://openbao:8200
-          version: v2
+    clusterSecretStores:
+      openbao:
+        provider:
+          vault:
+            auth:
+              kubernetes:
+                mountPath: kubernetes
+                role: external-secrets
+                serviceAccountRef:
+                  name: external-secrets
+                  namespace: external-secrets
+            path: kv
+            server: http://openbao:8200
+            version: v2
