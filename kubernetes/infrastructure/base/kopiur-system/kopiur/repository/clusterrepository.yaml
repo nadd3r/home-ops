@@ -1,0 +1,43 @@
+---
+apiVersion: kopiur.home-operations.com/v1alpha1
+kind: ClusterRepository
+metadata:
+  name: s3-backups
+spec:
+  allowedNamespaces:
+    all: true
+  backend:
+    s3:
+      auth:
+        secretRef:
+          name: kopiur-repository-secret
+          namespace: kopiur-system
+      bucket: bucket-name
+      endpoint: garage-s3.internal.sud0.net
+      region: us-east-1
+  encryption:
+    passwordSecretRef:
+      name: kopiur-repository-secret
+      namespace: kopiur-system
+      key: KOPIA_PASSWORD
+  maintenance:
+    schedule:
+      quick:
+        cron: 0 * * * *
+        jitter: 10m
+      full:
+        cron: 0 3 * * *
+        jitter: 1h
+  moverDefaults:
+    cache:
+      # Every cache PVC is 5Gi or larger (KOPIUR_CAPACITY default). Kopia's own
+      # defaults are 5000 MiB per budget, larger than the whole PVC, so the
+      # sweeper never runs and the cache fills the volume. The metadata budget
+      # applies twice: kopia caps the index-blobs cache at the same size.
+      contentCacheSizeMb: 512
+      metadataCacheSizeMb: 1024
+  parameters:
+    epoch:
+      minDuration: 1h
+  scheduleDefaults:
+    timezone: America/New_York

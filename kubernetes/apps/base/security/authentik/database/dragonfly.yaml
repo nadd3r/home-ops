@@ -5,17 +5,6 @@ metadata:
   name: authentik-redis
 spec:
   replicas: 3
-  env:
-    - name: MAX_MEMORY
-      valueFrom:
-        resourceFieldRef:
-          resource: limits.memory
-          divisor: 1Mi
-  args:
-    - --maxmemory=$(MAX_MEMORY)Mi
-    - --proactor_threads=2
-    - --cluster_mode=emulated
-    - --default_lua_flags=allow-undeclared-keys
   resources:
     requests:
       cpu: 50m

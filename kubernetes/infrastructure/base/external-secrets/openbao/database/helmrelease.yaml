@@ -1,0 +1,67 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: openbao-db
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: cloudnative-pg-cluster
+    namespace: database
+  interval: 1h
+  values:
+    type: postgresql
+    version:
+      postgresql: "18"
+    mode: standalone
+    cluster:
+      instances: 3
+      storage:
+        size: 30Gi
+        storageClass: local-path
+      resources:
+        requests:
+          cpu: 200m
+          memory: 1Gi
+        limits:
+          cpu: 250m
+          memory: 2Gi
+      monitoring:
+        enabled: true
+      initdb:
+        database: openbao-db
+        owner: openbao
+    poolers:
+      - name: rw
+        type: rw
+        instances: 3
+        parameters:
+          max_client_conn: "1000"
+          default_pool_size: "25"
+        monitoring:
+          enabled: true
+          podMonitor:
+            enabled: true
+            relabelings:
+              - targetLabel: type
+                replacement: rw
+        template:
+          spec:
+            initContainers:
+              - name: bootstrap-controller
+                resources:
+                  requests:
+                    cpu: 50m
+                    memory: 64Mi
+                  limits:
+                    cpu: 100m
+                    memory: 128Mi
+            containers:
+              - name: pgbouncer
+                resources:
+                  requests:
+                    cpu: 100m
+                    memory: 128Mi
+                  limits:
+                    cpu: 500m
+                    memory: 256Mi
