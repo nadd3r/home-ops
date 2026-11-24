@@ -4,8 +4,27 @@ kind: Kustomization
 metadata:
   name: openbao
 spec:
+  dependsOn:
+    - name: openbao-database
   interval: 1h
   path: ./kubernetes/infrastructure/<cluster>/external-secrets/openbao/app
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  targetNamespace: external-secrets
+  wait: false
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: openbao-database
+spec:
+  dependsOn:
+    - name: external-secrets-config
+  interval: 1h
+  path: ./kubernetes/infrastructure/<cluster>/external-secrets/openbao/database
   prune: true
   sourceRef:
     kind: GitRepository
