@@ -14,4 +14,4 @@ spec:
     name: flux-system
     namespace: flux-system
   targetNamespace: external-secrets
-  wait: false
+  wait: true

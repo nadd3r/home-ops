@@ -1,0 +1,21 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../../base/kopiur-system/kopiur/ks.yaml
+
+patches:
+  - target:
+      kind: Kustomization
+      name: kopiur
+    patch: |-
+      - op: replace
+        path: /spec/path
+        value: ./kubernetes/infrastructure/testing/kopiur-system/kopiur/app
+  - target:
+      kind: Kustomization
+      name: kopiur-repository
+    patch: |-
+      - op: replace
+        path: /spec/path
+        value: ./kubernetes/infrastructure/testing/kopiur-system/kopiur/repository

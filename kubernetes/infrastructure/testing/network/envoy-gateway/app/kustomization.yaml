@@ -1,0 +1,21 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../../../base/network/envoy-gateway/app
+
+patches:
+  - target:
+      kind: Certificate
+      name: example-production
+    path: ./certificate.yaml
+    options:
+      allowNameChange: true
+  - target:
+      kind: Gateway
+      name: envoy-external
+    path: ./envoy-external.yaml
+  - target:
+      kind: Gateway
+      name: envoy-internal
+    path: ./envoy-internal.yaml
