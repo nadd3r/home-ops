@@ -9,4 +9,4 @@ spec:
   secretRef:
     name: git-ssh-key
   ref:
-    name: "refs/heads/testing"
+    name: "refs/heads/main"
